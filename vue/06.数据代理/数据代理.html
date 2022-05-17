@@ -1,0 +1,61 @@
+<!-- 
+    Object.defineproperty
+    用这个方法加入的东西不能参加遍历，用enumerable:true允许遍历
+    用这个方法加入的东西不能被改变，用writable:true允许改变
+    用这个方法加入的东西不能被删除，用configurable:true允许删除
+    这个方法里面用到
+            get: function () {
+                return number
+            }
+            可以把number动态赋值给age属性
+
+            set(value){
+                number=value
+            }
+            可以把赋值给age的数值赋值给number
+
+-->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src='../js/vue.js'></script>
+</head>
+
+<body>
+    <script>
+        Vue.config.productionTip = false
+        let number = 55
+        let person = {
+            name: 'asa',
+            sex: 'male'
+        }
+
+
+        Object.defineProperty(person, 'age', {
+            // value: 18,
+            // enumerable: true,
+            // writable: true,
+            // configurable: true
+
+            // 读取age属性的时候，get会被调用，返回值就是age的数值
+            get: function () {
+                return number
+            },
+
+            // 修改age属性的时候，set会被调用，会收到具体的数值
+            set(value) {
+                number = value
+            }
+        })
+
+
+        console.log(person);
+    </script>
+</body>
+
+</html>

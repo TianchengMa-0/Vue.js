@@ -1,0 +1,89 @@
+<!-- 
+    监测numbers里面的a的变化
+        watch: {
+            'numbers.a':{
+                handler(newval,oldval){
+                    console.log(newval);
+                    console.log(oldval);
+                }
+            }
+        }
+    
+    监测numbers里面任何变化：设置deep:true
+        watch: {
+            numbers: {
+                deep: true,
+                handler() {
+                    console.log('change');
+                }
+            }
+
+        }
+ -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src='../js/vue.js'></script>
+</head>
+
+<body>
+    <div id="root">
+        <h1>weather is {{info}}</h1>
+        <button @click="changeWeather">click to change</button>
+        <hr>
+        <h3>a is {{numbers.a}}</h3>
+        <button @click="numbers.a++">click to a++</button>
+        <h3>b is {{numbers.b}}</h3>
+        <button @click="numbers.b++">click to b++</button>
+    </div>
+</body>
+<script>
+    const vm = new Vue({
+        el: '#root',
+        data: {
+            isHot: true,
+            numbers: {
+                a: 1,
+                b: 1
+            }
+        },
+        computed: {
+            info() {
+                return this.isHot ? 'hot' : 'cold'
+            }
+        },
+        methods: {
+            changeWeather() {
+                this.isHot = !this.isHot
+            }
+        },
+        watch: {
+            isHot: {
+                handler(newval, oldval) {
+                    console.log(newval);
+                    console.log(oldval);
+                }
+            },
+            'numbers.a': {
+                handler(newval, oldval) {
+                    console.log(newval);
+                    console.log(oldval);
+                }
+            },
+            numbers: {
+                deep: true,
+                handler() {
+                    console.log('change');
+                }
+            }
+
+        }
+    })
+</script>
+
+</html>

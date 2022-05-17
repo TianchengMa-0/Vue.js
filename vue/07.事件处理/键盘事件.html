@@ -1,0 +1,57 @@
+<!-- 
+    @keyup.enter="showInfo"
+    vue常见的按键别名：
+    enter,delete(有两个),esc,space,tab,up,down,left,right
+    tab需要配合keydown使用
+
+    特殊：ctrl,shift,alt,meta（win按键）
+    keyup按下之后需要按住别的按键，松开按键才会触发
+    keydown直接触发
+    @keyup.ctrl.y只有在ctrl+y的时候运行
+
+    Vue.config.keyCodes.huiche=13
+    自定义huiche的keycode是13
+    @keyup.huiche
+ -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src='../js/vue.js'></script>
+</head>
+
+<body>
+
+
+    <div id="root">
+        <h1>{{name}}</h1>
+        <input type="text" placeholder="press Enter to show tips" @keyup.enter="showInfo">
+    </div>
+
+
+</body>
+
+
+<script>
+    new Vue({
+        el: '#root',
+        data: {
+            name: 'pppp'
+        },
+        methods: {
+            showInfo(event) {
+                if (event.keyCode != 13) return
+                // console.log(event.keyCode)
+                console.log(event.target.value);
+            }
+        }
+    })
+</script>
+
+
+
+</html>

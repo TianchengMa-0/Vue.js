@@ -1,0 +1,50 @@
+<!-- 
+    1.head里面script引入vue
+    2.new Vue({
+        el:'#root',
+        data:{
+            name:'felix'
+        }
+    });
+ -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- 引入vue -->
+    <script src="../js/vue.js"></script>
+</head>
+
+<body>
+    <!-- 
+        1.创建vue，传入配置对象el，data
+        2.root依然是html，但是混入了vue
+        3.root里面的代码成为Vue模板
+        4.Vue和容器是一一对应的
+        5.{{xxx}}中的xxx要写js表达式
+        6.一旦data改变，页面中用到该数据的地方也会改变
+        能返回一个数值的是js表达式，js代码例子if
+     -->
+    <div class="root">
+        <h1>hello,{{name.toUpperCase()}}</h1>
+    </div>
+
+    <script>
+        Vue.config.productionTip = false
+        // 创建vue实例
+        new Vue({
+            // el用来找选择器
+            el: '.root',
+            // data存储数据
+            data: {
+                name: 'feli'
+            }
+        });
+    </script>
+</body>
+
+</html>

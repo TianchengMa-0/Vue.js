@@ -1,0 +1,57 @@
+<!-- 
+只有handler的时候可以开启简写
+ -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src='../js/vue.js'></script>
+</head>
+
+<body>
+    <div id="root">
+        <h1>weather is {{info}}</h1>
+        <button @click="changeWeather">click to change</button>
+    </div>
+</body>
+<script>
+    const vm = new Vue({
+        el: '#root',
+        data: {
+            isHot: true
+        },
+        computed: {
+            info() {
+                return this.isHot ? 'hot' : 'cold'
+            }
+        },
+        methods: {
+            changeWeather() {
+                this.isHot = !this.isHot
+            }
+        },
+        watch: {
+            // 完整
+            // isHot: {
+            //     handler() {
+            //         console.log(object);
+            //     }
+            // }
+
+            // 简写
+            // isHot(newval, oldval) {
+            //     console.log(newval)
+            // }
+        }
+    })
+    vm.$watch('isHot', function (newval, oldval) {
+        console.log(newval)
+        console.log(oldval)
+    })
+</script>
+
+</html>

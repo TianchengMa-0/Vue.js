@@ -1,0 +1,49 @@
+<!-- 
+    设置el：
+        <div id="root"></div>
+        const x = new Vue({})
+        x.$mount('#root')
+
+    设置data：
+        const x = new Vue({
+            data() {
+                return {
+                    name: 'feix'
+                }
+            }
+        })
+-->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="../js/vue.js"></script>
+</head>
+
+<body>
+    <div id="root">
+        <h1>{{name}}</h1>
+    </div>
+    <script>
+        Vue.config.productionTip = false
+        const x = new Vue({
+            // el:'#root',
+            // data: {
+            //     name: 'felix'
+            // }
+            data() {
+                return {
+                    name: 'feix'
+                }
+            }
+        })
+        x.$mount('#root')
+
+    </script>
+</body>
+
+</html>

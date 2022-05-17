@@ -1,0 +1,54 @@
+<!-- 
+    {{fullName}}
+    computed: {
+        fullName: {
+            get() {
+                return this.firstName + '-' + this.lastName
+            }
+        }
+    } 
+
+    调用一次get之后对数值进行了缓存，不会再进入get，用methods会没有缓存
+    get调用时间：初次读取fullName；所依赖的数据被改变
+-->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src='../js/vue.js'></script>
+</head>
+
+<body>
+    <div id="root">
+        姓：<input type="text" v-model='firstName'><br>
+        名：<input type="text" v-model="lastName"><br>
+        姓名：<span>{{fullName}}</span>
+    </div>
+</body>
+<script>
+    const vm = new Vue({
+        el: '#root',
+        data: {
+            firstName: 'zhang',
+            lastName: 'san'
+        },
+        computed: {
+            fullName: {
+                get() {
+                    return this.firstName + '-' + this.lastName
+                },
+                set(value) {
+                    const arr = value.split('-')
+                    this.firstName = arr[0]
+                    this.lastName = arr[1]
+                }
+            }
+        }
+    })
+</script>
+
+</html>

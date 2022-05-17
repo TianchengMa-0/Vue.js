@@ -1,0 +1,36 @@
+<!-- 
+    devtool和html页面里面双向改变
+    双向：v-model:value简写为v-model
+        v-model:value="name"
+        v-model只能用在表单元素上面，有value属性
+    单向：v-bind:name简写为:name
+ -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="../js/vue.js"></script>
+</head>
+
+<body>
+    <div id="root">
+        单项数据绑定：<input type="text" :value="name">
+        <br>
+        双向数据绑定：<input type="text" v-model="name">
+    </div>
+    <script>
+        Vue.config.productionTip = false
+        new Vue({
+            el: '#root',
+            data: {
+                name: 'felix'
+            }
+        })
+    </script>
+</body>
+
+</html>
